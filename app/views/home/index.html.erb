@@ -1,0 +1,17 @@
+<h1><%= @conversation.subject %></h1>
+
+<% @conversation.messages.each do |message| %>
+  <div class="message-item" style="padding:10px;margin:10px;background-color:lightgray;">
+    <p><strong><%= message.sender.username %></strong></p>
+    <p><%= message.body %></p>
+  </div>
+<% end %>
+
+<hr>
+<%= form_tag conversations_create_message_path do %>
+  <%= hidden_tag :sender_id, current_user.id %>
+  <div class="field">
+    <%= text_area_tag :body, autocomplete: "off" %>
+  </div>
+  <%= submit_tag 'Send' %>
+<% end %>
