@@ -15,4 +15,5 @@ User.all.each do |user|
   conversation.add_participant user
 end
 
-User.create email: 'system@example.com', username: 'System', password: 'systempassword', password_confirmation: 'systempassword'
+system = User.create email: 'system@example.com', username: 'System', password: 'systempassword', password_confirmation: 'systempassword'
+conversation.messages.create body: 'Welcome to the site! Type a message below...', sender_id: system.id, sender_type: 'User', subject: 'nothing'

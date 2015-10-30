@@ -2,8 +2,8 @@ class HomeController < ApplicationController
   before_filter :traffic_lights
   def index
     @conversation = Mailboxer::Conversation.first
-    system = User.find_by_email 'system@example.com'
-    @conversation.messages.create body: 'Welcome to the site! Type a message below...', sender_id: system.id, sender_type: 'User'
+    # system = User.find_by_email 'system@example.com'
+    # @conversation.messages.create body: 'Welcome to the site! Type a message below...', sender_id: system.id, sender_type: 'User', subject: 'nothing'
   end
 
   private
