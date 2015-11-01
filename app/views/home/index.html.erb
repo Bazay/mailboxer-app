@@ -1,17 +1,17 @@
 <h1><%= @conversation.subject %></h1>
 
 <% @conversation.messages.each do |message| %>
-  <div class="message-item" style="padding:10px;margin:10px;background-color:lightgray;">
+  <div class="message-item" style="padding:10px;margin:10px;background-color:<%= message.sender == current_user ? '#AEDB79' : 'lightgray' %>;margin-<%= message.sender == current_user ? 'left' : 'right' %>: 20%;">
     <p><strong><%= message.sender.username %></strong></p>
     <p><%= message.body %></p>
   </div>
 <% end %>
 
-<hr>
-<%= form_tag conversations_create_message_path do %>
-  <%= hidden_tag :sender_id, current_user.id %>
-  <div class="field">
-    <%= text_area_tag :body, autocomplete: "off" %>
-  </div>
-  <%= submit_tag 'Send' %>
-<% end %>
+<div class="message-box" style="position:fixed;bottom:0;left:0;width:100%;height:60px;background-color:white;border-top:1px solid lightgray;">
+  <%= form_tag conversations_create_message_path do %>
+    <%= hidden_field_tag :conversation_id, @conversation.id %>
+    <%= hidden_field_tag :sender_id, current_user.id %>
+    <%= text_area_tag :body, nil, style: 'width:90%;margin:10px;height:40px;' %>
+    <%= submit_tag 'Send', style: 'margin:10px;float:right;padding:10px;height:40px;width:5%;' %>
+  <% end %>
+</div>
