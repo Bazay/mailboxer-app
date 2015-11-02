@@ -1,7 +1,20 @@
 Rails.application.routes.draw do
-  root 'home#index'
+  get "/messages" => redirect("/conversations")
 
-  devise_for :users
-
-  post 'conversations/create_message', to: 'conversations#create_message', as: :conversations_create_message
+  resources :messages do
+    member do
+      post :new
+    end
+  end
+  resources :conversations do
+    member do
+      post :reply
+      post :trash
+      post :untrash
+    end
+    collection do
+      get :trashbin
+      post :empty_trash
+    end
+  end
 end

@@ -6,7 +6,7 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 3.times do |i| 
-  User.create username: "user#{i+1}", email: "user#{i+1}@example.com", password: "password", password_confirmation: "password"
+  User.create username: "user#{i+1}", email: "user#{i+1}@example.com", fuse_id: i+1, company_id: 1
 end
 
 conversation = Mailboxer::Conversation.create subject: 'Main Conversation'
@@ -15,5 +15,5 @@ User.all.each do |user|
   conversation.add_participant user
 end
 
-system = User.create email: 'system@example.com', username: 'System', password: 'systempassword', password_confirmation: 'systempassword'
+system = User.create email: 'system@example.com', username: 'System', fuse_id: User.count + 1, company_id: nil
 conversation.messages.create body: 'Welcome to the site! Type a message below...', sender_id: system.id, sender_type: 'User', subject: 'nothing'

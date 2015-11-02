@@ -6,6 +6,7 @@ gem 'sqlite3'
 gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
+gem 'annotate'
 
 # Assets
 gem 'sass-rails', '~> 5.0'
@@ -24,6 +25,9 @@ gem 'mailboxer'
 
 group :development, :test do
   gem 'pry'
+  gem 'rspec-rails', '~> 3.0'
+  gem 'factory_girl_rails'
+  gem 'faker'
 end
 
 group :development do
