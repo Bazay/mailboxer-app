@@ -1,0 +1,11 @@
+<ol class="discussion" ng-repeat="message in messages">
+  <message message="message"></message>
+</ol>
+<div class="reply-box">
+  <form>
+    <textarea id="reply-body" name="body" class="reply-input" placeholder="Type a message..."></textarea>
+    <div ng-click="reply()" class="reply-send pull-right">
+      <p>SEND</p>
+    </div>
+  </form>
+</div>

@@ -1,9 +1,18 @@
 class MessagesController < ApplicationController
+  skip_before_filter :verify_authenticity_token
+  before_filter :authorized?
+  before_action :conversation
+
+  respond_to :json
+
   def index
-    @conversations = current_user.mailbox.conversations
-    @notifications = current_user.mailbox.notifications.group_by &:sender_id
-    @receipts = current_user.mailbox.receipts
-    @message = current_user.mailbox.inbox.first.messages.first.body
+    # @conversations = current_user.mailbox.conversations
+    # @notifications = current_user.mailbox.notifications.group_by &:sender_id
+    # @receipts = current_user.mailbox.receipts
+    # @message = current_user.mailbox.inbox.first.messages.first.body
+    binding.pry
+    @conversation.mark_as_read current_user
+    @messages = @conversation.messages
   end
 
   # GET /message/new
@@ -14,9 +23,13 @@ class MessagesController < ApplicationController
 
   # POST /message/create
   def create
-    @recipient = User.find(params[:user])
-    current_user.send_message(@recipient, params[:body], params[:subject])
-    flash[:notice] = "Message has been sent!"
-    redirect_to :conversations
+    @conversation = current_user.mailbox.conversations.find(params[:conversation_id])
+    @message = current_user.reply_to_conversation(@conversation, params[:body])
+    render json: @message, success: true
   end
+
+  private
+    def conversation
+      @conversation ||= current_user.mailbox.conversations.find(params[:conversation_id])
+    end
 end

@@ -1,0 +1,7 @@
+<div class="list-item" ng-class="{unread: conversation.unread}">
+  <a href="#/inbox/{{conversation.id}}" class="conversation-view">
+    <p class="recipients"> {{conversation.recipients}}</p>
+    <p class='last-message'>{{conversation.last_message.body}}</p>
+    <span class="date"> {{conversation.created_at | date}}</span>
+  </a>
+</div>

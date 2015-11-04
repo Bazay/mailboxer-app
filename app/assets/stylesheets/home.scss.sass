@@ -1,0 +1,72 @@
+$pink: #e92284
+$pinkText: #E45A9E
+$headerHeight: 40px
+
+html, body
+  margin: 0
+  padding: 0
+  height: 100%
+  width: 100%
+  overflow-y: auto
+  font-size: 12px
+  background: #e5e5e5
+  padding-top: $headerHeight / 2
+
+.header
+  background-color: $pink
+  width: 100%
+  z-index: 10
+  position: fixed
+  top: 0
+  left: 0
+  line-height: $headerHeight
+  height: $headerHeight
+  
+  transition: ease 1s all
+  -webkit-transition: ease 1s all
+  -moz-transition: ease 1s all
+  -o-transition: ease 1s all
+
+.header h1
+  color: #fff
+  font-size: 16px
+  letter-spacing: 1.2px    
+  margin: 0
+  padding: 0
+  text-align: center
+
+.header .back-button
+  color: #fff
+  position: absolute
+  left: 0.5em
+  top: 0
+  text-align: center
+  font-size: 2em
+  font-weight: bold
+  color: white
+  text-decoration: none
+  display: none
+  &.show
+    display: block
+
+.list-item
+  border-bottom: 1px solid #A2A2A2
+  padding: 1.5em
+  color: #525252
+  p 
+    margin: 0 auto 0.5em 0
+  a
+    text-decoration: none
+    color: inherit
+  .subject, .recipients
+    font-size: 1.5em
+  .last-message
+    font-size: 1.2em
+  .date
+    color: gray
+  &.unread
+    color: $pinkText
+
+.container-fluid
+  padding-left: 0
+  padding-right: 0

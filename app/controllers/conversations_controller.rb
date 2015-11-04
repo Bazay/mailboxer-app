@@ -2,7 +2,7 @@ class ConversationsController < ApplicationController
   before_filter :authorized?
   helper_method :mailbox, :conversation
 
-  before_action :mailbox
+  before_action :mailbox, :rabl_current_user
 
   respond_to :json
 
@@ -18,10 +18,9 @@ class ConversationsController < ApplicationController
   end
 
   def index
-    @conversations ||= @mailbox.inbox
-    @conversationscount ||= current_user.mailbox.inbox.all
-    @trash ||= current_user.mailbox.trash.all
-    render json: @conversations, success: true
+    @conversations ||= @mailbox.conversations
+    # @conversationscount ||= current_user.mailbox.count
+    # @trash ||= current_user.mailbox.trash.all
   end
 
 
@@ -48,8 +47,8 @@ class ConversationsController < ApplicationController
   end
 
    def trashbin
-    @conversations ||= @mailbox.inbox
-    @conversationscount ||= current_user.mailbox.inbox.all
+    @conversations ||= @mailbox
+    @conversationscount ||= current_user.mailbox.all
     @trash ||=  current_user.mailbox.trash
     @trashcount ||= @mailbox.trash.all
   end
@@ -65,6 +64,10 @@ class ConversationsController < ApplicationController
 
   def mailbox
     @mailbox ||= current_user.mailbox
+  end
+
+  def rabl_current_user
+    @current_user = current_user
   end
 
   def conversation

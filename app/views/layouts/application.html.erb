@@ -1,14 +1,19 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>MailboxerApp</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
-</head>
-<body style="padding-bottom: 60px;">
+  <head>
+    <title>MailboxerApp</title>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    <%= csrf_meta_tags %>
+  </head>
+  <body ng-app="chatApp">
 
-<%= yield %>
+    <div class="header">
+      <h1>Mailboxer</h1>
+      <a class="back-button" href="#/inbox">&lt;</a>
+    </div>
 
-</body>
+    <%= yield %>
+
+  </body>
 </html>

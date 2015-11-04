@@ -1,0 +1,46 @@
+app = angular.module('chatApp', ['ngRoute'])
+.constant('ROUTES', (function() {
+  var resource = 'http://localhost:3000';
+
+  return {
+    BASE_URL: resource,
+    ASSETS_URL: resource + '/assets'
+  }
+})())
+.value('current_user', (function() {
+  var resource = {
+    user: {
+      id: null,
+      fuse_id: 5,
+      username: null,
+      email: null,
+      company_id: 1,
+      to_params: 'user[fuse_id]='+this.id+'&user[username]=\''+String(this.username)+'\'&user[email]=\''+String(this.email)+'\'&user[company_id]='+this.company_id
+    }
+  };
+  console.log(resource.user)
+  return resource.user
+})())
+.constant('currentUserParams', 'user[fuse_id]=1&user[username]=\'Bazay\'&user[email]=\'baronbloomer@gmail.com\'&user[company_id]=1')
+.config(function($routeProvider, ROUTES) {
+  $routeProvider
+  .when('/', {
+    controller: 'LandingController',
+    templateUrl: './assets/views/landing.html'
+  })
+  .when('/register', {
+    controller: 'RegisterController',
+    templateUrl: './assets/views/register.html'
+  })
+  .when('/inbox', {
+    controller: 'InboxController',
+    templateUrl: './assets/views/inbox.html'
+  })
+  .when('/inbox/:id', {
+    controller: 'ConversationController',
+    templateUrl: './assets/views/conversation.html'
+  })
+  .otherwise({
+    redirectTo: '/'
+  });
+});

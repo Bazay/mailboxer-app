@@ -9,12 +9,17 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'annotate'
 
 # Assets
-gem 'sass-rails', '~> 5.0'
+gem 'bootstrap-sass', '~> 3.3.5'
+gem 'sass-rails', '>= 3.2'
 gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.1.0'
 gem 'jquery-rails'
 gem 'haml-coffee'
 gem 'haml'
+gem 'socket.io-rails'
+gem 'socket.io-client-simple'
+gem 'rabl'
+gem 'oj'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
@@ -22,6 +27,7 @@ gem 'haml'
 gem 'unicorn'
 gem 'devise'
 gem 'mailboxer'
+gem 'angularjs-rails'
 
 group :development, :test do
   gem 'pry'
@@ -36,4 +42,3 @@ group :development do
   gem 'better_errors'
   gem 'spring'
 end
-

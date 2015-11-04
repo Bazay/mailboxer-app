@@ -1,5 +1,5 @@
 class HomeController < ApplicationController
-  before_filter :traffic_lights
+  # before_filter :traffic_lights
   def index
     @conversation = Mailboxer::Conversation.first
   end

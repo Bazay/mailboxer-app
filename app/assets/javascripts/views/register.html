@@ -1,0 +1,11 @@
+<form ng-submit="submit()" ng-controller="RegisterController">
+  <input type="hidden" ng-value="fuse_id">
+  <input type="hidden" ng-value="company_id">
+  <div class="form-group">
+    <input type="email" class="form-control" id="email" ng-model="email" placeholder="Email">
+  </div>
+  <div class="form-group">
+    <input type="username" class="form-control" id="username" ng-model="username" placeholder="Username">
+  </div>
+  <input type="submit" id="submit" value="Submit">
+</form>

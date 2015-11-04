@@ -16,7 +16,7 @@ class User < ActiveRecord::Base
 
   def is_authorized? user_params
     # Add token authentication here...
-    fuse_id == user_params['fuse_id']
+    fuse_id == user_params['fuse_id'].to_i
   end
 
   def self.find_or_create_fuse_user fuse_user
