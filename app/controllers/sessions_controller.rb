@@ -1,5 +1,5 @@
 class SessionsController < ApplicationController
-  before_filter :authenticate, only: :create
+  before_filter :authorized?, only: :create
 
   respond_to :json
 

@@ -1,5 +1,4 @@
 class MessagesController < ApplicationController
-  skip_before_filter :verify_authenticity_token
   before_filter :authorized?
   before_action :conversation
 
@@ -10,7 +9,6 @@ class MessagesController < ApplicationController
     # @notifications = current_user.mailbox.notifications.group_by &:sender_id
     # @receipts = current_user.mailbox.receipts
     # @message = current_user.mailbox.inbox.first.messages.first.body
-    binding.pry
     @conversation.mark_as_read current_user
     @messages = @conversation.messages
   end

@@ -21,5 +21,6 @@ Rails.application.routes.draw do
     end
   end
   
-  get '/sessions/new', to: 'sessions#new'
+  #get '/sessions/new', to: 'sessions#new'
+  resources :sessions, only: [:new, :create]
 end

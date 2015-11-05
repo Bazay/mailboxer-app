@@ -14,13 +14,15 @@ app = angular.module('chatApp', ['ngRoute'])
       fuse_id: 5,
       username: null,
       email: null,
-      company_id: 1,
-      to_params: 'user[fuse_id]='+this.id+'&user[username]=\''+String(this.username)+'\'&user[email]=\''+String(this.email)+'\'&user[company_id]='+this.company_id
+      company_id: 1
     }
   };
   console.log(resource.user)
   return resource.user
 })())
+.constant('current_user_params', (function() {
+  return 'user[fuse_id]='+current_user.id+'&user[username]=\''+String(current_user.username)+'\'&user[email]=\''+String(current_user.email)+'\'&user[company_id]='+current_user.company_id
+}))
 .constant('currentUserParams', 'user[fuse_id]=1&user[username]=\'Bazay\'&user[email]=\'baronbloomer@gmail.com\'&user[company_id]=1')
 .config(function($routeProvider, ROUTES) {
   $routeProvider
