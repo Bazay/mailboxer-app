@@ -1,5 +1,5 @@
-app.directive('message', function(current_user) {
-  console.log(current_user);
+app.directive('message', function($rootScope) {
+  console.log($rootScope.current_user);
   return {
     restrict: 'E',
     scope: {
@@ -8,7 +8,7 @@ app.directive('message', function(current_user) {
     templateUrl: 'assets/directives/message.html',
     link: function(scope, element, attrs) {
       scope.current_user = function() {
-        return current_user
+        return $rootScope.current_user
       }
     }
   }

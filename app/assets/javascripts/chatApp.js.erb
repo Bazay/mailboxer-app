@@ -7,23 +7,6 @@ app = angular.module('chatApp', ['ngRoute'])
     ASSETS_URL: resource + '/assets'
   }
 })())
-.value('current_user', (function() {
-  var resource = {
-    user: {
-      id: null,
-      fuse_id: 5,
-      username: null,
-      email: null,
-      company_id: 1
-    }
-  };
-  console.log(resource.user)
-  return resource.user
-})())
-.constant('current_user_params', (function() {
-  return 'user[fuse_id]='+current_user.id+'&user[username]=\''+String(current_user.username)+'\'&user[email]=\''+String(current_user.email)+'\'&user[company_id]='+current_user.company_id
-}))
-.constant('currentUserParams', 'user[fuse_id]=1&user[username]=\'Bazay\'&user[email]=\'baronbloomer@gmail.com\'&user[company_id]=1')
 .config(function($routeProvider, ROUTES) {
   $routeProvider
   .when('/', {

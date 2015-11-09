@@ -1,8 +1,5 @@
 class UsersController < ApplicationController
-  before_filter :authenticate, only: :create
-  before_filter :authorized?, except: [:create, :new]
   helper_method :mailbox, :conversation
-
   before_action :mailbox, :rabl_current_user
 
   respond_to :json

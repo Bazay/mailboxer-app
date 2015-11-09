@@ -1,63 +1,43 @@
 class ConversationsController < ApplicationController
-  before_filter :authorized?
-  helper_method :mailbox, :conversation
-
-  before_action :mailbox, :rabl_current_user
+  before_action :mailbox, :conversations
 
   respond_to :json
 
+  def index
+  end
+
   def create
-    recipient_fuse_ids = conversation_params(:recipients).split(',')
-    recipients = User.where(fuse_id: recipient_fuse_ids).all
+    recipients = parse_users(conversation_params[:recipients])
 
     if conversation = current_user.send_message(recipients, *conversation_params(:body, :subject)).conversation
-      render json: conversation, status: :created, location: conversation
+      render json: conversation, status: :created
     else
       render json: conversation.errors, status: :unprocessable_entity
     end
   end
 
-  def index
-    @conversations ||= @mailbox.conversations
-    # @conversationscount ||= current_user.mailbox.count
-    # @trash ||= current_user.mailbox.trash.all
+  def show
+    @conversation = @conversations.find(conversation_params[:id])
+    conversation.mark_as_read(current_user)
   end
 
+  def destroy
+    @conversation = @conversations.find(conversation_params[:id])
+    @conversation.move_to_trash(current_user)
+
+    redirect_to :index
+  end
 
   def reply
-    current_user.reply_to_conversation(conversation, params[:body])
-    redirect_to conversation_path(@conversation)
+    @conversation = @conversations.find(conversation_params[:id])
+    current_user.reply_to_conversation(@conversation, params[:body])
+    redirect_to :show
   end
 
-  def trash
-    conversation.move_to_trash(current_user)
-    redirect_to :conversations
-  end
-
-  def show
-    @conversation ||= @mailbox.conversations.find(params[:id])
-    conversation.mark_as_read(current_user)
-
-    render json: { conversation: @conversation }
-  end
-
-  def untrash
-    conversation.untrash(current_user)
-    redirect_to :back
-  end
-
-   def trashbin
-    @conversations ||= @mailbox
-    @conversationscount ||= current_user.mailbox.all
-    @trash ||=  current_user.mailbox.trash
-    @trashcount ||= @mailbox.trash.all
-  end
-
-  def empty_trash
-    current_user.mailbox.trash.each do |conversation|
-      conversation.receipts_for(current_user).update_all(:deleted => true)
-    end
-   redirect_to :conversations
+  def add_participant
+    @conversation = @conversations.find(conversation_params[:id])
+    @conversation.add_participant(participants)
+    redirect_to :show
   end
 
   private
@@ -66,11 +46,11 @@ class ConversationsController < ApplicationController
     @mailbox ||= current_user.mailbox
   end
 
-  def rabl_current_user
-    @current_user = current_user
+  def conversations
+    @conversations = @mailbox.conversations
   end
 
-  def conversation
-    @conversation ||= mailbox.conversations.find(params[:id])
+  def parse_users(users)
+    return User.where(id: users.split(',')).all
   end
 end

@@ -1,5 +1,4 @@
 class MessagesController < ApplicationController
-  before_filter :authorized?
   before_action :conversation
 
   respond_to :json

@@ -1,5 +1,6 @@
 app.factory('sessions', ['$http', 'ROUTES', 'current_user', function($http, ROUTES, current_user) {
-  return $http.get(ROUTES.BASE_URL + '/sessions/new?user[fuse_id]=' + current_user.fuse_id)
+  console.log('sessions')
+  return $http.get(ROUTES.BASE_URL + '/sessions/new?user[fuse_id]=' + String(current_user.fuse_id))
             .success(function(data) {
               return data;
             })
