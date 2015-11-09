@@ -4,8 +4,8 @@ app.controller('RegisterController', ['$scope', '$window', 'register', 'ROUTES',
   console.log(current_user)
   $scope.company_id = current_user.company_id;
   $scope.fuse_id = current_user.fuse_id;
-  $scope.email = 'hi@example.com'
-  $scope.username = 'hi'
+  $scope.email = ''
+  $scope.username = ''
   
   $scope.submit = function() {
     console.log($scope.email)

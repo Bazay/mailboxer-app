@@ -5,10 +5,10 @@ app.factory('current_user', ['$rootScope', function($rootScope) {
 
     var user = {
       id: null,
-      fuse_id: 1,
+      fuse_id: null,
       username: null,
       email: null,
-      company_id: 1
+      company_id: null
     }
 
     $rootScope.current_user = user
