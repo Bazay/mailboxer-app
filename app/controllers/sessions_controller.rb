@@ -3,6 +3,7 @@ class SessionsController < ApplicationController
   respond_to :json
 
   def create
+    binding.pry
     @user = User.find_or_create_fuse_user(user_params)
     if @user
       render json: @user, success: true

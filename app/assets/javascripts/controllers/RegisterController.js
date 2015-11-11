@@ -8,12 +8,11 @@ app.controller('RegisterController', ['$scope', '$window', 'register', 'ROUTES',
   $scope.username = ''
   
   $scope.submit = function() {
-    console.log($scope.email)
     current_user.email = $scope.email;
     current_user.username = $scope.username;
-    console.log(current_user)
-    register.success(function(data) {
-      current_user = data;
+    current_user.update_attributes(current_user)
+    register.getJSONData().success(function(data) {
+      current_user.update_attributes(data);
       $window.location.href = '#/inbox';
     })
     .error(function(err) {

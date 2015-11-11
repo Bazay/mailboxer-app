@@ -1,6 +1,8 @@
-app.controller('InboxController', ['$scope', '$window', 'conversations', function($scope, $window, conversations) {
+app.controller('InboxController', ['$scope', '$window', 'conversations', '$rootScope', function($scope, $window, conversations, $rootScope) {
   $scope.header = $('.header h1');
   $scope.header.html('Inbox')
+  console.log($rootScope.current_user)
+  console.log($rootScope)
   conversations.success(function(data) {
     $scope.conversations = data;
     $scope.backButton = $('.back-button');
@@ -8,8 +10,8 @@ app.controller('InboxController', ['$scope', '$window', 'conversations', functio
     $scope.signOutButton = $('.signout-button');
     $scope.signOutButton.addClass('show');
   });  
-  $scope.signOut = function() {
-    $rootScope.current_user = undefined;
+  $rootScope.signOut = function() {
+    delete $rootScope.current_user;
     $window.location.href = '#/';
   };
 }]);

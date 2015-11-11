@@ -5,7 +5,7 @@ app.factory('current_user', ['$rootScope', function($rootScope) {
 
     var user = {
       id: null,
-      fuse_id: null,
+      fuse_id: 24,
       username: null,
       email: null,
       company_id: null
@@ -24,7 +24,7 @@ app.factory('current_user', ['$rootScope', function($rootScope) {
     email: $rootScope.current_user.email,
     company_id: $rootScope.current_user.company_id,
     to_params: function() {
-      return 'user[fuse_id]='+String($rootScope.current_user.id)+'&user[username]=\''+String($rootScope.current_user.username)+'\'&user[email]=\''+String($rootScope.current_user.email)+'\'&user[company_id]='+String($rootScope.current_user.company_id)
+      return 'user[id]='+String($rootScope.current_user.id)+'&user[fuse_id]='+String($rootScope.current_user.fuse_id)+'&user[username]='+String($rootScope.current_user.username)+'&user[email]='+String($rootScope.current_user.email)+'&user[company_id]='+String($rootScope.current_user.company_id)
     },
     update_attributes: function(data) {
       $rootScope.current_user.id = data.id;

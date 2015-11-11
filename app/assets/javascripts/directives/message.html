@@ -1,6 +1,9 @@
 <li class="{{message.sender_id==current_user().id ? 'self' : 'other'}}">
   <ol style="padding: 0">
     <li>
+      <p class="sender">{{message.sender_id==current_user().id ? 'You' : message.sender.username}}</p>
+    </li>
+    <li>
       <div class="avatar">
         <img src="https://fusion.fusion-universal.com/media/W1siZiIsIjIwMTUvMDcvMTUvMTAvMjIvMTQvNjY0LzExMTMzODEyXzEwMTUzMjU3NjY4OTEwOTk2XzYwMjkwOTI2Nzg0Mzk2MzA0NThfbi5qcGciXSxbInAiLCJ0aHVtYiIsIjQyeDQyIyJdXQ?sha=55c56fdb" />
         <!--<img ng-src="{{message.sender.avatar_url}}" />-->
@@ -10,7 +13,7 @@
       </div>
     </li>
     <li>
-      <time datetime="{{message.created_at}}"> {{message.created_at | date}}</time>
+      <time datetime="{{message.created_at}}" class="timestamp"> {{message.created_at | date}}</time>
     </li>
   </ol>
 </li>
