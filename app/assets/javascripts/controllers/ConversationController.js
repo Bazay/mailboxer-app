@@ -1,11 +1,12 @@
-app.controller('ConversationController', ['$scope', 'messages', '$http', '$routeParams', 'ROUTES', 'current_user', '$window', function($scope, messages, $http, $routeParams, ROUTES, current_user, $window) {
+app.controller('ConversationController', ['$scope', 'MessageFactory', '$http', '$routeParams', 'ROUTES', 'current_user', '$window', function($scope, MessageFactory, $http, $routeParams, ROUTES, current_user, $window) {
   $scope.header = $('.header h1');
-  messages.openSubscriptionChannel($routeParams.id);
-  messages.getJSONData($routeParams.id)
+
+  mf = MessageFactory
+  mf.openSubscriptionChannel($routeParams.id);
+  mf.fetch($routeParams.id)
   .success(function(data) {
-    console.log('Data:')
-    console.log(data)
-    $scope.messages = data;
+    $scope.messages = mf.getMessages;
+    console.log(mf.getMessages)
     if ($scope.messages[0].conversation_recipients.split(',').length > 2) {
       $scope.header.html($scope.messages[0].conversation.subject);
     } else {
