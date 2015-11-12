@@ -1,10 +1,9 @@
-app.controller('LandingController', ['$scope', '$window', 'sessions', 'ROUTES', 'current_user', function($scope, $window, sessions, ROUTES, current_user) {
+app.controller('LandingController', ['$scope', '$window', 'sessions', 'ROUTES', 'current_user', '$rootScope', function($scope, $window, sessions, ROUTES, current_user, $rootScope) {
+  $rootScope.socketio = io.connect('Barons-iMac.local:1337');
   $scope.header = $('.header h1');
   $scope.header.html('Fuse Chat');
   sessions.getJSONData().success(function(data) {
-    console.log(data.user);
     current_user = current_user.update_attributes(data.user);
-    console.log(current_user);
     $window.location.href = '#/inbox';
   })
   .error(function() {

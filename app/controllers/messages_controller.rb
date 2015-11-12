@@ -9,7 +9,7 @@ class MessagesController < ApplicationController
     # @receipts = current_user.mailbox.receipts
     # @message = current_user.mailbox.inbox.first.messages.first.body
     @conversation.mark_as_read current_user
-    @messages = @conversation.messages
+    @messages = @conversation.messages.order('created_at DESC').first(20)
   end
 
   # GET /message/new

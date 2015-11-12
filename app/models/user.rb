@@ -22,7 +22,6 @@ class User < ActiveRecord::Base
   end
 
   def self.find_or_create_fuse_user fuse_user
-    binding.pry
     User.find_by_fuse_id(fuse_user['fuse_id']) || User.create(fuse_user) unless fuse_user.blank?
   end
 

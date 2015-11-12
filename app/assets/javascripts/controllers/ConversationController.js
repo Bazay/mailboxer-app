@@ -1,12 +1,16 @@
 app.controller('ConversationController', ['$scope', 'messages', '$http', '$routeParams', 'ROUTES', 'current_user', '$window', function($scope, messages, $http, $routeParams, ROUTES, current_user, $window) {
   $scope.header = $('.header h1');
+  messages.openSubscriptionChannel($routeParams.id);
   messages.getJSONData($routeParams.id)
   .success(function(data) {
     console.log('Data:')
     console.log(data)
     $scope.messages = data;
-    $scope.header.html($scope.messages[0].conversation_recipients)
-    console.log($scope.messages[0].conversation_recipients)
+    if ($scope.messages[0].conversation_recipients.split(',').length > 2) {
+      $scope.header.html($scope.messages[0].conversation.subject);
+    } else {
+      $scope.header.html($scope.messages[0].conversation_recipients);
+    }
   })
   .error(function(err){
     alert('There was an error: ' + err);
@@ -21,6 +25,7 @@ app.controller('ConversationController', ['$scope', 'messages', '$http', '$route
       if (message.length > 0) {
         $http.post(ROUTES.BASE_URL + '/conversations/' + String($routeParams.id) + '/messages?' + current_user.to_params() + '&body=' + message)
         .success(function(){
+          messages.sendMessage($routeParams.id, message, current_user.username);
           $textarea.val('');
         })
       }

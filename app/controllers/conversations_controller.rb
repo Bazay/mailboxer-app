@@ -31,6 +31,10 @@ class ConversationsController < ApplicationController
   def reply
     @conversation = @conversations.find(conversation_params[:id])
     current_user.reply_to_conversation(@conversation, params[:body])
+
+    redis = Redis.new(host: 'Barons-iMac.local', port: 6380)
+    redis.publish 'message_to_redis_server', { message: params[:body], username: current_user.username, conversation_id: @conversation.id }
+
     redirect_to :show
   end
 

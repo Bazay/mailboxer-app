@@ -28,6 +28,7 @@ gem 'unicorn'
 gem 'devise'
 gem 'mailboxer'
 gem 'angularjs-rails'
+gem 'redis'
 
 group :development, :test do
   gem 'pry'
