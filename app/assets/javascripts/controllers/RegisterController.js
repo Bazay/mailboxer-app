@@ -6,12 +6,10 @@ app.controller('RegisterController', ['$scope', '$window', 'register', 'ROUTES',
   $scope.fuse_id = current_user.fuse_id();
   $scope.email = ''
   $scope.username = ''
-  $scope.fuse_id = ''
   
   $scope.submit = function() {
     $rootScope.current_user.email = $scope.email;
     $rootScope.current_user.username = $scope.username;
-    $rootScope.current_user.fuse_id = parseInt($scope.fuse_id);
     register.getJSONData().success(function(data) {
       current_user.update_attributes(data);
       $window.location.href = '#/inbox';
