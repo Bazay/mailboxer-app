@@ -5,14 +5,12 @@ app.factory('current_user', ['$rootScope', function($rootScope) {
 
     var user = {
       id: null,
-      // fuse_id: parent.gon.current_user.id,
+      fuse_id: parent.gon.current_user.id,
       fuse_id: null,
       username: null,
       email: null,
-      // company_id: parent.gon.current_company.id,
-      // avatar_url: parent.gon.current_user.avatar_url
-      company_id: 1,
-      avatar_url: 'https://fusion.fusion-universal.com/media/W1siZiIsIjIwMTUvMDcvMTUvMTAvMjIvMTQvNjY0LzExMTMzODEyXzEwMTUzMjU3NjY4OTEwOTk2XzYwMjkwOTI2Nzg0Mzk2MzA0NThfbi5qcGciXSxbInAiLCJ0aHVtYiIsIjQyeDQyIyJdXQ?sha=55c56fdb'
+      company_id: parent.gon.current_company.id,
+      avatar_url: parent.gon.current_user.avatar_url
     }
 
     $rootScope.current_user = user

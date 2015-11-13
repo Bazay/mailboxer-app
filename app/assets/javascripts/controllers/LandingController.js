@@ -1,5 +1,5 @@
 app.controller('LandingController', ['$scope', '$window', 'sessions', 'ROUTES', 'current_user', '$rootScope', function($scope, $window, sessions, ROUTES, current_user, $rootScope) {
-  $rootScope.socketio = io.connect('http://fuse-chat-node.herokuapp.com:5000');
+  $rootScope.socketio = io.connect('http://fuse-chat-node.herokuapp.com:45194');
   $scope.header = $('.header h1');
   $scope.header.html('Fuse Chat');
   sessions.getJSONData().success(function(data) {

@@ -1,0 +1,364 @@
+@import url(http://weloveiconfonts.com/api/?family=typicons);
+/* line 2, /Users/baron/Development/mailboxer-app/app/assets/stylesheets/chat.scss */
+[class*="typicons-"]:before {
+  font-family: 'Typicons', sans-serif;
+}
+
+/* line 6, /Users/baron/Development/mailboxer-app/app/assets/stylesheets/chat.scss */
+.module {
+  width: 300px;
+  margin: 20px auto;
+}
+
+/* line 11, /Users/baron/Development/mailboxer-app/app/assets/stylesheets/chat.scss */
+.top-bar {
+  background: #e92284;
+  color: white;
+  padding: 0.5rem;
+  position: relative;
+  overflow: hidden;
+}
+/* line 17, /Users/baron/Development/mailboxer-app/app/assets/stylesheets/chat.scss */
+.top-bar h1 {
+  display: inline;
+  font-size: 1.5rem;
+}
+/* line 21, /Users/baron/Development/mailboxer-app/app/assets/stylesheets/chat.scss */
+.top-bar .typicons-message {
+  display: inline-block;
+  padding: 4px 5px 2px 5px;
+}
+/* line 25, /Users/baron/Development/mailboxer-app/app/assets/stylesheets/chat.scss */
+.top-bar .typicons-minus {
+  position: relative;
+  top: 3px;
+}
+/* line 29, /Users/baron/Development/mailboxer-app/app/assets/stylesheets/chat.scss */
+.top-bar .left {
+  float: left;
+}
+/* line 32, /Users/baron/Development/mailboxer-app/app/assets/stylesheets/chat.scss */
+.top-bar .right {
+  float: right;
+  padding-top: 5px;
+}
+/* line 36, /Users/baron/Development/mailboxer-app/app/assets/stylesheets/chat.scss */
+.top-bar > * {
+  position: relative;
+}
+/* line 39, /Users/baron/Development/mailboxer-app/app/assets/stylesheets/chat.scss */
+.top-bar::before {
+  content: "";
+  position: absolute;
+  top: -100%;
+  left: 0;
+  right: 0;
+  bottom: -100%;
+  opacity: 0.25;
+  background: radial-gradient(white, black);
+  animation: pulse 1s ease alternate infinite;
+}
+
+/* line 52, /Users/baron/Development/mailboxer-app/app/assets/stylesheets/chat.scss */
+.discussion {
+  list-style: none;
+  background: #e5e5e5;
+  margin: 0;
+  padding: 0;
+}
+/* line 57, /Users/baron/Development/mailboxer-app/app/assets/stylesheets/chat.scss */
+.discussion li {
+  padding: 0.5rem;
+  overflow: hidden;
+  display: flex;
+}
+/* line 62, /Users/baron/Development/mailboxer-app/app/assets/stylesheets/chat.scss */
+.discussion .avatar {
+  width: 40px;
+  position: relative;
+}
+/* line 66, /Users/baron/Development/mailboxer-app/app/assets/stylesheets/chat.scss */
+.discussion .avatar img {
+  display: block;
+  width: 100%;
+}
+
+/* line 75, /Users/baron/Development/mailboxer-app/app/assets/stylesheets/chat.scss */
+.other .avatar:after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 0;
+  height: 0;
+  border: 5px solid white;
+  border-left-color: transparent;
+  border-bottom-color: transparent;
+}
+/* line 87, /Users/baron/Development/mailboxer-app/app/assets/stylesheets/chat.scss */
+.other .sender {
+  margin: 0;
+}
+
+/* line 92, /Users/baron/Development/mailboxer-app/app/assets/stylesheets/chat.scss */
+.self {
+  justify-content: flex-end;
+  align-items: flex-end;
+}
+/* line 95, /Users/baron/Development/mailboxer-app/app/assets/stylesheets/chat.scss */
+.self .messages {
+  order: 1;
+  border-bottom-right-radius: 0;
+}
+/* line 99, /Users/baron/Development/mailboxer-app/app/assets/stylesheets/chat.scss */
+.self .avatar {
+  order: 2;
+}
+/* line 101, /Users/baron/Development/mailboxer-app/app/assets/stylesheets/chat.scss */
+.self .avatar:after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 0;
+  border: 5px solid white;
+  border-right-color: transparent;
+  border-top-color: transparent;
+  box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+}
+/* line 114, /Users/baron/Development/mailboxer-app/app/assets/stylesheets/chat.scss */
+.self .sender {
+  text-align: right;
+  width: 100%;
+  margin: 0;
+}
+/* line 119, /Users/baron/Development/mailboxer-app/app/assets/stylesheets/chat.scss */
+.self .timestamp {
+  text-align: right;
+  width: 100%;
+}
+
+/* line 125, /Users/baron/Development/mailboxer-app/app/assets/stylesheets/chat.scss */
+.sender {
+  font-size: 1.15em;
+}
+
+/* line 129, /Users/baron/Development/mailboxer-app/app/assets/stylesheets/chat.scss */
+.messages {
+  background: white;
+  padding: 10px;
+  border-radius: 2px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+/* line 134, /Users/baron/Development/mailboxer-app/app/assets/stylesheets/chat.scss */
+.messages p {
+  font-size: 1.2rem;
+  margin: 0 0 0.2rem 0;
+}
+/* line 138, /Users/baron/Development/mailboxer-app/app/assets/stylesheets/chat.scss */
+.messages time {
+  font-size: 1rem;
+  color: #ccc;
+}
+
+/* line 144, /Users/baron/Development/mailboxer-app/app/assets/stylesheets/chat.scss */
+.reply-box {
+  height: 4em;
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: white;
+  border-top: 1px solid lightgray;
+}
+/* line 153, /Users/baron/Development/mailboxer-app/app/assets/stylesheets/chat.scss */
+.reply-box form {
+  height: 100%;
+}
+/* line 156, /Users/baron/Development/mailboxer-app/app/assets/stylesheets/chat.scss */
+.reply-box textarea {
+  resize: none;
+  overflow: auto;
+  width: 80%;
+  height: 85%;
+  border: 0;
+  border-right: 1px solid lightgray;
+}
+/* line 164, /Users/baron/Development/mailboxer-app/app/assets/stylesheets/chat.scss */
+.reply-box .reply-send {
+  float: right;
+  width: 18%;
+  height: 100%;
+}
+/* line 168, /Users/baron/Development/mailboxer-app/app/assets/stylesheets/chat.scss */
+.reply-box .reply-send p {
+  text-align: center;
+  font-size: 1.2em;
+  font-weight: bold;
+  color: #e92284;
+}
+
+@keyframes pulse {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 0.5;
+  }
+}
+/* line 5, /Users/baron/Development/mailboxer-app/app/assets/stylesheets/home.scss.sass */
+/* line 2, /Users/baron/Development/mailboxer-app/app/assets/stylesheets/home.scss.sass */
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+  overflow-y: auto;
+  font-size: 12px;
+  background: #e5e5e5;
+  padding-top: 20px;
+}
+
+/* line 15, /Users/baron/Development/mailboxer-app/app/assets/stylesheets/home.scss.sass */
+/* line 14, /Users/baron/Development/mailboxer-app/app/assets/stylesheets/home.scss.sass */
+.header {
+  background-color: #e92284;
+  width: 100%;
+  z-index: 10;
+  position: fixed;
+  top: 0;
+  left: 0;
+  line-height: 40px;
+  height: 40px;
+  transition: ease 1s all;
+  -webkit-transition: ease 1s all;
+  -moz-transition: ease 1s all;
+  -o-transition: ease 1s all;
+}
+
+/* line 30, /Users/baron/Development/mailboxer-app/app/assets/stylesheets/home.scss.sass */
+/* line 30, /Users/baron/Development/mailboxer-app/app/assets/stylesheets/home.scss.sass */
+.header h1 {
+  color: #fff;
+  font-size: 16px;
+  letter-spacing: 1.2px;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+}
+
+/* line 39, /Users/baron/Development/mailboxer-app/app/assets/stylesheets/home.scss.sass */
+/* line 40, /Users/baron/Development/mailboxer-app/app/assets/stylesheets/home.scss.sass */
+.header .back-button {
+  color: #fff;
+  position: absolute;
+  left: 0.5em;
+  top: 0;
+  text-align: center;
+  font-size: 2em;
+  font-weight: bold;
+  color: white;
+  text-decoration: none;
+  display: none;
+}
+
+/* line 50, /Users/baron/Development/mailboxer-app/app/assets/stylesheets/home.scss.sass */
+/* line 53, /Users/baron/Development/mailboxer-app/app/assets/stylesheets/home.scss.sass */
+.header .back-button.show {
+  display: block;
+}
+
+/* line 52, /Users/baron/Development/mailboxer-app/app/assets/stylesheets/home.scss.sass */
+/* line 57, /Users/baron/Development/mailboxer-app/app/assets/stylesheets/home.scss.sass */
+.header .signout-button {
+  color: lightgray;
+  position: absolute;
+  right: 0.5em;
+  top: 0;
+  text-align: center;
+  font-size: 2em;
+  font-weight: bold;
+  color: white;
+  text-decoration: none;
+  display: none;
+}
+
+/* line 63, /Users/baron/Development/mailboxer-app/app/assets/stylesheets/home.scss.sass */
+/* line 70, /Users/baron/Development/mailboxer-app/app/assets/stylesheets/home.scss.sass */
+.header .signout-button.show {
+  display: block;
+}
+
+/* line 66, /Users/baron/Development/mailboxer-app/app/assets/stylesheets/home.scss.sass */
+/* line 75, /Users/baron/Development/mailboxer-app/app/assets/stylesheets/home.scss.sass */
+.list-item {
+  border-bottom: 1px solid #A2A2A2;
+  padding: 1.5em;
+  color: #525252;
+}
+
+/* line 70, /Users/baron/Development/mailboxer-app/app/assets/stylesheets/home.scss.sass */
+/* line 81, /Users/baron/Development/mailboxer-app/app/assets/stylesheets/home.scss.sass */
+.list-item p {
+  margin: 0 auto 0.5em 0;
+}
+
+/* line 72, /Users/baron/Development/mailboxer-app/app/assets/stylesheets/home.scss.sass */
+/* line 85, /Users/baron/Development/mailboxer-app/app/assets/stylesheets/home.scss.sass */
+.list-item a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* line 75, /Users/baron/Development/mailboxer-app/app/assets/stylesheets/home.scss.sass */
+/* line 90, /Users/baron/Development/mailboxer-app/app/assets/stylesheets/home.scss.sass */
+.list-item .subject, .list-item .recipients {
+  font-size: 1.5em;
+}
+
+/* line 77, /Users/baron/Development/mailboxer-app/app/assets/stylesheets/home.scss.sass */
+/* line 94, /Users/baron/Development/mailboxer-app/app/assets/stylesheets/home.scss.sass */
+.list-item .last-message {
+  font-size: 1.2em;
+}
+
+/* line 79, /Users/baron/Development/mailboxer-app/app/assets/stylesheets/home.scss.sass */
+/* line 98, /Users/baron/Development/mailboxer-app/app/assets/stylesheets/home.scss.sass */
+.list-item .date {
+  color: gray;
+}
+
+/* line 81, /Users/baron/Development/mailboxer-app/app/assets/stylesheets/home.scss.sass */
+/* line 102, /Users/baron/Development/mailboxer-app/app/assets/stylesheets/home.scss.sass */
+.list-item.unread {
+  color: #E45A9E;
+}
+
+/* line 84, /Users/baron/Development/mailboxer-app/app/assets/stylesheets/home.scss.sass */
+/* line 107, /Users/baron/Development/mailboxer-app/app/assets/stylesheets/home.scss.sass */
+.container-fluid {
+  padding-left: 0;
+  padding-right: 0;
+}
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+
+
+ */
+
+
+
+@import "bootstrap-sprockets";
+@import "bootstrap";
