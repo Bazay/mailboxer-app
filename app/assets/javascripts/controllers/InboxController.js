@@ -10,8 +10,8 @@ app.controller('InboxController', ['$scope', '$window', 'conversations', '$rootS
     $scope.signOutButton = $('.signout-button');
     $scope.signOutButton.addClass('show');
   });  
-  $rootScope.signOut = function() {
-    delete $rootScope.current_user;
-    $window.location.href = '#/';
-  };
+  // $rootScope.signOut = function() {
+  //   delete $rootScope.current_user;
+  //   $window.location.href = '#/';
+  // };
 }]);
