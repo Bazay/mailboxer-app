@@ -9,6 +9,7 @@
 #  company_id :integer
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
+#  avatar_url :string           default("")
 #
 
 class User < ActiveRecord::Base
@@ -27,6 +28,6 @@ class User < ActiveRecord::Base
 
   private
     def add_to_main_conversation
-      Mailboxer::Conversation.first.add_participant(self)
+      Mailboxer::Conversation.first.add_participant(self) if Mailboxer::Conversation.first
     end
 end

@@ -8,12 +8,12 @@
 3.times do |i| 
   User.create username: "user#{i+1}", email: "user#{i+1}@example.com", fuse_id: i+1, company_id: 1
 end
+user = User.find(1)
 
-conversation = Mailboxer::Conversation.create subject: 'Main Conversation'
+conversation = user.send_message(User.where(id: [2,3]), 'Hello World', subject: 'Main Conversation').conversation
 
-User.all.each do |user|
-  conversation.add_participant user
-end
+# User.all.each do |user|
+#   conversation.add_participant user
+# end
 
 system = User.create email: 'system@example.com', username: 'System', fuse_id: User.count + 1, company_id: nil
-conversation.messages.create body: 'Welcome to the site! Type a message below...', sender_id: system.id, sender_type: 'User', subject: 'nothing'

@@ -20,16 +20,33 @@ app.factory('current_user', ['$rootScope', function($rootScope) {
     console.log(false)
   }
 
+  var id = function() { return $rootScope.current_user.id },
+  fuse_id = function() { return $rootScope.current_user.fuse_id },
+  username = function() { return $rootScope.current_user.username },
+  email = function() { return $rootScope.current_user.email },
+  company_id = function() { return $rootScope.current_user.company_id },
+  avatar_url = function() { return $rootScope.current_user.avatar_url };
+
 
   return {
-    id: $rootScope.current_user.id,
-    fuse_id: $rootScope.current_user.fuse_id,
-    username: $rootScope.current_user.username,
-    email: $rootScope.current_user.email,
-    company_id: $rootScope.current_user.company_id,
-    avatar_url: $rootScope.current_user.avatar_url,
+    id: function() { id() },
+    fuse_id: function() { fuse_id() },
+    username: function() { username() },
+    email: function() { email() },
+    company_id: function() { company_id() },
+    avatar_url: function() { avatar_url() },
     to_params: function() {
       return 'user[id]='+String($rootScope.current_user.id)+'&user[fuse_id]='+String($rootScope.current_user.fuse_id)+'&user[username]='+String($rootScope.current_user.username)+'&user[email]='+String($rootScope.current_user.email)+'&user[company_id]='+String($rootScope.current_user.company_id)
+    },
+    attributes: function() {
+      return {
+        id: id(),
+        fuse_id: fuse_id(),
+        username: username(),
+        email: email(),
+        company_id: company_id(),
+        avatar_url: avatar_url()
+      }
     },
     update_attributes: function(data) {
       $rootScope.current_user.id = data.id;
